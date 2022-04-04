@@ -29,9 +29,7 @@
         <div class="form-inline my-2 my-lg-0">
             <?php
             if (isset($_SESSION['user_id'])) {
-                $header = '<form  method="post" action="index.php?action=user-register">' .
-                    '<a type="submit" href="index.php?action=user-logout" name="logout" class="btn btn-outline-success my-2 my-sm-0">Logout</a>' .
-                    '</form>';
+                $header = '<a type="submit" href="index.php?action=user-logout" name="logout" class="btn btn-outline-success my-2 my-sm-0">Logout</a>';
             } else {
                 $header = '<a href="index.php?action=user-login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</a>' .
                     '<a href="index.php?action=user-register" class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</a>';
