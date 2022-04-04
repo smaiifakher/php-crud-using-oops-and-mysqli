@@ -12,9 +12,10 @@ $action = "";
 if (!empty($_GET["action"])) {
     $action = $_GET["action"];
 }
-//if (!isset($_SESSION['user_id']) || $action != "user-register" || $action != "user-logout") {
-//    $action = "user-login";
-//}
+
+if (!isset($_SESSION['user_id']) && $action != "user-register" && $action != "user-logout") {
+    $action = "user-login";
+}
 
 // Sanitize POST
 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -139,7 +140,7 @@ switch ($action) {
         $result = $student->getAllStudents();
 
         $response = array(
-            "message" => json_encode($_SESSION),
+            "message" => "Welcome Home",
             "type" => "success"
         );
         require_once "web/student.php";

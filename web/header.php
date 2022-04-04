@@ -27,10 +27,8 @@
             </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">
-
             <?php
             if (isset($_SESSION['user_id'])) {
-                //$header = '<a href="index.php?action=user-logout" class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</a>';
                 $header = '<form  method="post" action="index.php?action=user-register">' .
                     '<a type="submit" href="index.php?action=user-logout" name="logout" class="btn btn-outline-success my-2 my-sm-0">Logout</a>' .
                     '</form>';
