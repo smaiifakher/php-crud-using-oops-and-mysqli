@@ -2,7 +2,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-lg-7">
-            <h3 class="mb-4 text-center">Create Record</h3>
+            <h3 class="mb-4 text-center">Register</h3>
             <div class="form-body bg-light p-4">
                 <form name="frmAdd" method="post" action="" id="frmAdd"
                       onSubmit="return validate();">
@@ -29,13 +29,24 @@
                             <small id="city-info" class="text-danger"></small>
                         </div>
                         <div class="col-lg-6 mb-4">
-                            <label for="state" class="form-label">State*</label>
-                            <input type="text" class="form-control demoInputBox" id="state" name="state">
-                            <small id="state-info" class="text-danger"></small>
+                            <label for="country" class="form-label">Country*</label>
+                            <input type="text" class="form-control demoInputBox" id="country" name="country">
+                            <small id="country-info" class="text-danger"></small>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <label for="password" class="form-label">Password*</label>
+                            <input type="text" class="form-control demoInputBox" id="password" name="password">
+                            <small id="password-info" class="text-danger"></small>
                         </div>
                         <div class="col-lg-12">
-                            <input type="submit" name="add" id="btnSubmit" value="Add"
+                            <input type="submit" name="register" id="btnSubmit" value="Add"
                                    class="btn btn-primary form-control">
+
+
+                            <br>
+                            <br>
+                            <a href="index.php?action=user-register"
+                               class="btn btn-outline-secondary form-control">Login ? </a>
                         </div>
                     </div>
                 </form>
@@ -73,9 +84,14 @@
             $("#city").css('background-color', '#FFFFDF');
             valid = false;
         }
-        if (!$("#state").val()) {
-            $("#state-info").html("*This field is required");
-            $("#state").css('background-color', '#FFFFDF');
+        if (!$("#country").val()) {
+            $("#country-info").html("*This field is required");
+            $("#country").css('background-color', '#FFFFDF');
+            valid = false;
+        }
+        if (!$("#password").val()) {
+            $("#password-info").html("*This field is required");
+            $("#password").css('background-color', '#FFFFDF');
             valid = false;
         }
         return valid;

@@ -15,3 +15,32 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a href="index.php" class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Home</a>
+            </li>
+
+            <br>
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+
+            <a href="index.php?action=user-login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</a>
+        </div>
+    </div>
+</nav>
+
+<?php
+if (isset($response)) {
+    echo '<div class="alert alert-danger" role="alert">
+    ' . $response["message"] . '
+</div>';
+}
+?>
+
