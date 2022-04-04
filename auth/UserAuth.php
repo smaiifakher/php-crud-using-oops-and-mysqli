@@ -14,53 +14,40 @@ class UserAuth
     }
 
 
-    public function register($fname, $lname, $email, $city, $country, $password)
+    public function register($name, $email, $password)
     {
-        // Check if logged in
-        if ($this->isLoggedIn()) {
-            return true;
-        }
-
         $data = [
             'email_err' => '',
             'password_err' => '',
-            'name_err' => '',
         ];
-
-        // Validate email
-        if (empty($email)) {
-            $data['email_err'] = 'Please enter an email';
-            // Validate name
-            if (empty([$lname, $fname])) {
-                $data['name_err'] = 'Please enter a name';
-            }
-
-        } else {
-            // Check Email
-            if ($this->userModel->getUserByEmail($email)) {
-                $data['email_err'] = 'Email is already taken.';
-            }
+        // Check if logged in
+        if ($this->isLoggedIn()) {
+            $data['email_err'] = 'User already logged in';
+            return $data;
         }
 
-        // Validate password
-        if (empty($password)) {
-            $data['password_err'] = 'Please enter a password.';
+        // Check Email
+        if ($this->userModel->getUserByEmail($email)) {
+            $data['email_err'] = 'Email is already taken.';
+            return $data;
         }
-
 
         // Make sure errors are empty
-        if (empty($data['name_err']) && empty($data['email_err']) && empty($data['password_err'])) {
+        if (empty($data['email_err']) && empty($data['password_err'])) {
             // SUCCESS - Proceed to insert
 
             // Hash Password
-            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+            $password = password_hash($password, PASSWORD_DEFAULT);
 
             //Execute
-            if ($this->userModel->register($fname, $lname, $email, $city, $country, $password)) {
+            $user = $this->userModel->register($name, $email, $password);
+
+            if ($user) {
                 // Redirect to login
-                return true;
+                return "success";
             } else {
-                die('Something went wrong');
+                $data['email_err'] = 'Error in registering.';
+                return $data;
             }
 
         } else {
@@ -73,15 +60,10 @@ class UserAuth
 
     function login($email, $password)
     {
-
         // Check if logged in
         if ($this->isLoggedIn()) {
             return true;
         }
-
-
-        // Sanitize POST
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         $data = [
             'email_err' => '',
@@ -113,28 +95,26 @@ class UserAuth
             if ($loggedInUser) {
                 // User Authenticated!
                 $this->createUserSession($loggedInUser);
-                return true;
+                return "success";
             } else {
                 $data['password_err'] = 'Password incorrect.';
                 // Load View
                 return $data;
             }
-
         } else {
             // Load View
             return $data;
         }
-
-
     }
 
 // Create Session With User Info
 
     function createUserSession($user)
     {
-        $_SESSION['user_id'] = $user->id;
-        $_SESSION['user_email'] = $user->email;
-        $_SESSION['user_name'] = $user->name;
+        $user = $user[0];
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_email'] = $user['email'];
+        $_SESSION['user_name'] = $user['name'];
     }
 
 // Logout & Destroy Session
@@ -145,7 +125,6 @@ class UserAuth
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
         session_destroy();
-        return true;
     }
 
 // Check Logged In

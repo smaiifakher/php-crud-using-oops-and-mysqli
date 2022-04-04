@@ -20,27 +20,40 @@
             aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-
+    <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
                 <a href="index.php" class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Home</a>
             </li>
-
-            <br>
         </ul>
         <div class="form-inline my-2 my-lg-0">
 
-            <a href="index.php?action=user-login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</a>
+            <?php
+            if (isset($_SESSION['user_id'])) {
+                //$header = '<a href="index.php?action=user-logout" class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</a>';
+                $header = '<form  method="post" action="index.php?action=user-register">' .
+                    '<a type="submit" href="index.php?action=user-logout" name="logout" class="btn btn-outline-success my-2 my-sm-0">Logout</a>' .
+                    '</form>';
+            } else {
+                $header = '<a href="index.php?action=user-login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</a>' .
+                    '<a href="index.php?action=user-register" class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</a>';
+            }
+            echo $header;
+            ?>
         </div>
     </div>
 </nav>
 
 <?php
 if (isset($response)) {
-    echo '<div class="alert alert-danger" role="alert">
-    ' . $response["message"] . '
-</div>';
+    switch ($response['type']) {
+        case 'error':
+            echo '<div class="alert alert-danger" role="alert">' . $response['message'] . '</div>';
+            break;
+        case 'success':
+            echo '<div class="alert alert-success" role="alert">' . $response['message'] . '</div>';
+            break;
+    }
 }
 ?>
 

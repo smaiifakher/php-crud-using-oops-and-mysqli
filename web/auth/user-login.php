@@ -19,17 +19,13 @@
                             <small id="password-info" class="text-danger"></small>
                         </div>
                         <div class="col-lg-12">
-                            <input type="submit" name="login" id="btnSubmit" value="Add"
+                            <input type="submit" name="login" id="btnSubmit" value="Login"
                                    class="btn btn-primary form-control">
-
                             <br>
                             <br>
                             <a href="index.php?action=user-register"
                                class="btn btn-outline-secondary form-control">Register Instead ? </a>
-
                         </div>
-
-
                     </div>
                 </form>
             </div>

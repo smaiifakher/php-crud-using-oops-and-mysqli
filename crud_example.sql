@@ -29,11 +29,11 @@ SET
 
 CREATE TABLE `tbl_student`
 (
-    `id`          int(11)     NOT NULL,
-    `name`        varchar(55) NOT NULL,
-    `roll_number` varchar(11)     NOT NULL,
+    `id`          int(11)      NOT NULL,
+    `name`        varchar(55)  NOT NULL,
+    `roll_number` varchar(11)  NOT NULL,
     `email`       varchar(100) NOT NULL,
-    `class`       varchar(55) NOT NULL
+    `class`       varchar(55)  NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = latin1;
 
@@ -44,10 +44,10 @@ CREATE TABLE `tbl_student`
 
 CREATE TABLE `users`
 (
-    `id`       int(11)     NOT NULL,
-    `name`    varchar(55) NOT NULL,
-    `email`    varchar(55) NOT NULL,
-    `password` varchar(55) NOT NULL
+    `id`       int(11)      NOT NULL,
+    `name`     varchar(55)  NOT NULL,
+    `email`    varchar(100) NOT NULL,
+    `password` varchar(100) NOT NULL
 
 
 ) ENGINE = InnoDB
@@ -88,7 +88,7 @@ ALTER TABLE `tbl_student`
 
 ALTER TABLE `users`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 100;
+    AUTO_INCREMENT = 10;
 
 
 

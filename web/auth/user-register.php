@@ -7,45 +7,29 @@
                 <form name="frmAdd" method="post" action="" id="frmAdd"
                       onSubmit="return validate();">
                     <div class="row">
-                        <div class="col-lg-6 mb-3">
-                            <label for="fname" class="form-label">Firstname *</label>
-                            <input type="text" class="form-control demoInputBox" id="fname" name="fname">
-                            <small id="fname-info" class="text-danger"></small>
 
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label for="lname" class="form-label">Lastname*</label>
-                            <input type="text" class="form-control demoInputBox" id="lname" name="lname">
-                            <small id="lname-info" class="text-danger"></small>
+                        <div class="col-lg-12 mb-3">
+                            <label for="name" class="form-label">Name*</label>
+                            <input type="text" class="form-control demoInputBox" id="name" name="name">
+                            <small id="name-info" class="text-danger"></small>
                         </div>
                         <div class="col-lg-12 mb-3">
                             <label for="email" class="form-label">Email Address*</label>
                             <input type="email" class="form-control demoInputBox" id="email" name="email">
                             <small id="email-info" class="text-danger"></small>
                         </div>
-                        <div class="col-lg-6 mb-3">
-                            <label for="city" class="form-label">City*</label>
-                            <input type="text" class="form-control demoInputBox" id="city" name="city">
-                            <small id="city-info" class="text-danger"></small>
-                        </div>
-                        <div class="col-lg-6 mb-4">
-                            <label for="country" class="form-label">Country*</label>
-                            <input type="text" class="form-control demoInputBox" id="country" name="country">
-                            <small id="country-info" class="text-danger"></small>
-                        </div>
-                        <div class="col-lg-6 mb-4">
+
+                        <div class="col-lg-12 mb-4">
                             <label for="password" class="form-label">Password*</label>
-                            <input type="text" class="form-control demoInputBox" id="password" name="password">
+                            <input type="password" class="form-control demoInputBox" id="password" name="password">
                             <small id="password-info" class="text-danger"></small>
                         </div>
                         <div class="col-lg-12">
-                            <input type="submit" name="register" id="btnSubmit" value="Add"
+                            <input type="submit" name="register" id="btnSubmit" value="Register"
                                    class="btn btn-primary form-control">
-
-
                             <br>
                             <br>
-                            <a href="index.php?action=user-register"
+                            <a href="index.php?action=user-login"
                                class="btn btn-outline-secondary form-control">Login ? </a>
                         </div>
                     </div>
@@ -64,29 +48,15 @@
         $(".demoInputBox").css('background-color', '');
         $(".info").html('');
 
-        if (!$("#fname").val()) {
-            $("#fname-info").html("*This field is required");
-            $("#fname").css('background-color', '#FFFFDF');
+        if (!$("#name").val()) {
+            $("#name-info").html("*This field is required");
+            $("#name").css('background-color', '#FFFFDF');
             valid = false;
         }
-        if (!$("#lname").val()) {
-            $("#lname-info").html("*This field is required");
-            $("#lname").css('background-color', '#FFFFDF');
-            valid = false;
-        }
+
         if (!$("#email").val()) {
             $("#email-info").html("*This field is required");
             $("#email").css('background-color', '#FFFFDF');
-            valid = false;
-        }
-        if (!$("#city").val()) {
-            $("#city-info").html("*This field is required");
-            $("#city").css('background-color', '#FFFFDF');
-            valid = false;
-        }
-        if (!$("#country").val()) {
-            $("#country-info").html("*This field is required");
-            $("#country").css('background-color', '#FFFFDF');
             valid = false;
         }
         if (!$("#password").val()) {

@@ -14,7 +14,7 @@ class User
     function getUserByEmail($email)
     {
         $query = "SELECT * FROM users WHERE email = ?";
-        $paramType = "i";
+        $paramType = "s";
         $paramValue = array(
             $email
         );
@@ -25,39 +25,32 @@ class User
 
     function login($email, $password)
     {
-        $query = ("SELECT * FROM users WHERE email = ? ");
+        $query = "SELECT * FROM users WHERE email = ?";
         $paramType = "s";
-
         $paramValue = array(
             $email,
-            $password
         );
 
         $result = $this->db_handle->runQuery($query, $paramType, $paramValue);
-        if ($result)
-            $hashed_password = $result[0]["password"];
-        if ($hashed_password && password_verify($password, $hashed_password))
+        $hashed_password = $result[0]["password"];
+        if (password_verify($password, $hashed_password))
             return $result;
         else return false;
     }
 
-    public function register($fname, $lname, $email, $city, $country, $password)
+    public function register($name, $email, $password)
     {
-        $query = "INSERT INTO users (fname,lname,email,city,country,password) VALUES (?, ?, ?, ?, ?, ?)";
-        $paramType = "sissis";
+        $query = "INSERT INTO users (name,email,password) VALUES (?, ?, ?)";
+        $paramType = "sss";
         $paramValue = array(
-            $fname,
-            $lname,
+            $name,
             $email,
-            $city,
-            $country,
             $password
         );
 
         $insertId = $this->db_handle->insert($query, $paramType, $paramValue);
         return $insertId;
     }
-
 
 }
 
