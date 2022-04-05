@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <link href="/web/css/style.css" rel="stylesheet">
+    <link href="/app/views/css/style.css" rel="stylesheet">
     <title>PHP Crud using OOPS and MySQLi</title>
 </head>
 <body>
@@ -29,7 +29,7 @@
         <div class="form-inline my-2 my-lg-0">
             <?php
             if (isset($_SESSION['user_id'])) {
-                $header = '<a type="submit" href="index.php?action=user-logout" name="logout" class="btn btn-outline-success my-2 my-sm-0">Logout</a>';
+                $header = '<a type="submit" href="index.php?action=user-logout"  class="btn btn-outline-success my-2 my-sm-0">Logout</a>';
             } else {
                 $header = '<a href="index.php?action=user-login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</a>' .
                     '<a href="index.php?action=user-register" class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</a>';

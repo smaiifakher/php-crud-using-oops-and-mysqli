@@ -1,4 +1,4 @@
-<?php require_once "web/header.php"; ?>
+<?php require_once "app/views/header.php"; ?>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-lg-7">

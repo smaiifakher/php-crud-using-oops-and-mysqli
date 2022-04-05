@@ -1,6 +1,9 @@
 <?php
-require_once("class/DBController.php");
-require_once("class/User.php");
+
+namespace Crud\Auth;
+
+use Crud\Database\DBController;
+use Crud\Models\User;
 
 class UserAuth
 {

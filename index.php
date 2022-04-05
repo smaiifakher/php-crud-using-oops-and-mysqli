@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-require_once("class/DBController.php");
-require_once("class/User.php");
-require_once("class/Student.php");
-require_once("auth/UserAuth.php");
+use Crud\Auth\UserAuth;
+use Crud\Models\Student;
 
-$db_handle = new DBController();
-$userAuth = new UserAuth();
+require './app/boostrap.php';
+
+
 $action = "";
 if (!empty($_GET["action"])) {
     $action = $_GET["action"];
@@ -37,7 +36,7 @@ switch ($action) {
                 );
             }
         }
-        require_once "web/auth/user-login.php";
+        require_once "app/views/auth/user-login.php";
         break;
 
     case "user-register":
@@ -66,7 +65,7 @@ switch ($action) {
                 );
             }
         }
-        require_once "web/auth/user-register.php";
+        require_once "app/views/auth/user-register.php";
         break;
 
     case "user-logout":
@@ -93,7 +92,7 @@ switch ($action) {
                 header("Location: index.php");
             }
         }
-        require_once "web/student-add.php";
+        require_once "app/views/student-add.php";
         break;
 
     case "student-edit":
@@ -117,7 +116,7 @@ switch ($action) {
         }
 
         $result = $student->getStudentById($student_id);
-        require_once "web/student-edit.php";
+        require_once "app/views/student-edit.php";
         break;
 
     case "student-delete":
@@ -132,7 +131,7 @@ switch ($action) {
         );
         $result = $student->getAllStudents();
 
-        require_once "web/student.php";
+        require_once "app/views/student.php";
         break;
 
     default:
@@ -143,7 +142,7 @@ switch ($action) {
             "message" => "Welcome Home",
             "type" => "success"
         );
-        require_once "web/student.php";
+        require_once "app/views/student.php";
         break;
 }
 ?>

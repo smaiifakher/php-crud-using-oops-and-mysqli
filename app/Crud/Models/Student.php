@@ -1,6 +1,9 @@
 <?php
 
-require_once("class/DBController.php");
+namespace Crud\Models;
+
+use Crud\Database\DBController;
+
 
 class Student
 {

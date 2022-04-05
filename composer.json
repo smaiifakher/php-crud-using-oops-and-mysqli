@@ -1,0 +1,15 @@
+{
+  "name": "fakher/php-crud-oop-mvc",
+  "autoload": {
+    "psr-4": {
+      "Crud\\": "app/Crud/"
+    }
+  },
+  "authors": [
+    {
+      "name": "fakher",
+      "email": "smaiifakher1994@gmail.com"
+    }
+  ],
+  "require": {}
+}

@@ -1,5 +1,7 @@
 <?php
 
+namespace Crud\Database;
+
 class DBController
 {
     private string $host = "localhost";
